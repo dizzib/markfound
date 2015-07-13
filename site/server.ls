@@ -1,20 +1,28 @@
 global.log = console.log
-
-is-dev = (env = process.env.NODE_ENV) in <[ development ]>
+Args = require \./args
+global.log.debug = if Args.verbose then console.log else ->
 
 ErrHan  = require \errorhandler
 Express = require \express
-Fs      = require \fs
 Http    = require \http
-Morgan  = require \morgan if is-dev
-Path    = require \path
-Shell   = require \shelljs/global
-Args    = require \./args
+Morgan  = require \morgan if is-dev = (env = process.env.NODE_ENV) in <[ development ]>
+Index   = require \./index
+Transf  = require \./transform
 
 express = Express!
-  ..set \port, Args.port
+  ..set \port Args.port
   ..use Morgan \dev if is-dev
-  #..use Express.static
+  ..set 'view engine' \jade
+  ..set \views __dirname
+  ..get '/' (, res, next) ->
+    err, paths <- Index
+    return next err if err
+    res.render \index paths:paths
+  ..get '/*/*.md' (req, res, next) ->
+    err, body <- Transf req.originalUrl
+    return next err if err
+    res.render \template/github body:body
+  ..use Express.static Args.root-path
   ..use ErrHan log: -> log it.stack
 
 http = Http.createServer express

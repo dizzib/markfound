@@ -10,6 +10,7 @@ module.exports =
       cp \-f pjson, Dir.ROOT
       cp \-f pjson, Dir.build.SITE
     cp \-f "#{Dir.ROOT}/readme.md" Dir.build.SITE
+    cp \-f "#{Dir.ROOT}/node_modules/github-markdown-css/github-markdown.css" "#{Dir.build.SITE}/template"
 
   publish-local: ->
     pushd Dir.build.SITE

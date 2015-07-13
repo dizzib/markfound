@@ -1,18 +1,19 @@
 C = require \commander
-_ = require \lodash
 P = require \path
 J = require \./package.json
 
 const DEFAULT-CONFIG-PATH = \$XDG_CONFIG_HOME/markfound
 const DEFAULT-PORT = 4567
 
-config_home = process.env.XDG_CONFIG_HOME or P.join process.env.HOME, \.config
+config_home = process.env.XDG_CONFIG_HOME or P.join home = process.env.HOME, \.config
 default-config-path = DEFAULT-CONFIG-PATH.replace \$XDG_CONFIG_HOME config_home
 
 C.version J.version
 C.usage '[Options]'
-C.option '-c, --config-path [path]', "path to configuration files (default:#default-config-path)", default-config-path
-C.option '-p, --port [port]', "listening port (default:#DEFAULT-PORT)", DEFAULT-PORT
+C.option '-c, --config-path [path]' "path to configuration files (default:#default-config-path)" default-config-path
+C.option '-p, --port [port]' "listening port (default:#DEFAULT-PORT)", DEFAULT-PORT
+C.option '-r, --root-path [path]' "root path (default:#home)" home
+C.option '-v, --verbose' 'emit detailed trace for debugging'
 C.parse process.argv
 
 module.exports = C
