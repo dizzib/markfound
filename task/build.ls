@@ -22,7 +22,7 @@ tasks  =
     xsub  : 'json.js->json'
   static:
     cmd : 'cp --target-directory $OUT $IN'
-    pat : '{markfound,*.{jade,js,md,yml}}'
+    pat : '{markfound,*.{conf,jade,js,md}}'
 
 module.exports = me = (new Emitter!) with
   all: ->

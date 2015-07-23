@@ -6,7 +6,7 @@ Args  = require \./args
 Const = require \./constants
 G     = require \./growl
 
-const RUNCMD = 'server -v'
+const RUNCMD = 'server -c ./default.conf -p 4501 -v'
 
 module.exports = me =
   recycle: ->

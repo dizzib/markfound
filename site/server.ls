@@ -6,6 +6,7 @@ ErrHan  = require \errorhandler
 Express = require \express
 Http    = require \http
 Morgan  = require \morgan if is-dev = (env = process.env.NODE_ENV) in <[ development ]>
+Config  = require \./config .load!
 Index   = require \./index
 Transf  = require \./transform
 
@@ -18,11 +19,11 @@ express = Express!
     err, paths <- Index
     return next err if err
     res.render \index paths:paths
-  ..get '/*/*.md' (req, res, next) ->
+  ..get /.*\.(markdown|md)$/ (req, res, next) ->
     err, body <- Transf req.originalUrl
     return next err if err
     res.render \template/github body:body
-  ..use Express.static Args.root-path
+  #..use Express.static Config.base-path
   ..use ErrHan log: -> log it.stack
 
 http = Http.createServer express
