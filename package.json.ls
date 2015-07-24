@@ -22,9 +22,7 @@ dependencies:
   express      : \4.11.1
   jade         : \1.9.2
   leanconf     : \0.1.0
-  lodash       : \3.5.0
   marked       : \0.3.3
-  shelljs      : \0.3.0
   stylus       : \0.49.3
 devDependencies:
   chalk                : \~0.4.0
@@ -34,7 +32,9 @@ devDependencies:
   gntp                 : \~0.1.1
   istanbul             : \~0.3.13
   livescript           : \~1.4.0
+  lodash               : \~3.5.0
   mocha                : \~2.2.5
   morgan               : \~1.5.1
+  shelljs              : \~0.3.0
   'wait.for'           : \~0.6.6
 preferGlobal: true
