@@ -7,6 +7,7 @@ Http    = require \http
 Morgan  = require \morgan if is-dev = (env = process.env.NODE_ENV) in <[ development ]>
 Path    = require \path
 Config  = require \./config .load! # must load first
+CustCss = require \./custom-css
 LiveRef = require \./live-refresh
 Index   = require \./index
 Transf  = require \./transform
@@ -23,7 +24,9 @@ express = Express!
   ..get /.*\.(markdown|md)$/ (req, res, next) ->
     err, body <- Transf req.originalUrl
     return next err if err
-    res.render \template/github body:body
+    err, css <- CustCss
+    return next err if err
+    res.render \template/github body:body, css:css
   ..use Express.static "#__dirname/client"
   #..use Express.static Config.base-path
   ..use ErrHan log: -> log it.stack
