@@ -1,12 +1,13 @@
 global.log = console.log
-Args = require \./args
-global.log.debug = if Args.verbose then console.log else ->
+global.log.debug = if (Args = require \./args).verbose then console.log else ->
 
 ErrHan  = require \errorhandler
 Express = require \express
 Http    = require \http
 Morgan  = require \morgan if is-dev = (env = process.env.NODE_ENV) in <[ development ]>
-Config  = require \./config .load!
+Path    = require \path
+Config  = require \./config .load! # must load first
+LiveRef = require \./live-refresh
 Index   = require \./index
 Transf  = require \./transform
 
@@ -23,10 +24,11 @@ express = Express!
     err, body <- Transf req.originalUrl
     return next err if err
     res.render \template/github body:body
+  ..use Express.static "#__dirname/client"
   #..use Express.static Config.base-path
   ..use ErrHan log: -> log it.stack
 
-http = Http.createServer express
+LiveRef http = Http.createServer express
 err <- http.listen port = Args.port
 return log err if err
 log "Express http server listening on port #port"
