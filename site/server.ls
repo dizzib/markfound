@@ -20,13 +20,15 @@ express = Express!
   ..get '/' (, res, next) ->
     err, paths <- Index
     return next err if err
-    res.render \index paths:paths
+    err, css <- CustCss
+    return next err if err
+    res.render \index css:css, paths:paths
 for na in Config.names then express.get na, (req, res, next) ->
-  err, body <- Transf req.originalUrl
+  err, body <- Transf path = req.originalUrl
   return next err if err
   err, css <- CustCss
   return next err if err
-  res.render \template/github body:body, css:css
+  res.render \template/github body:body, css:css, title:path
 express
   ..use Express.static "#__dirname/client"
   #..use Express.static Config.base-path
