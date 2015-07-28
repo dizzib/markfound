@@ -37,7 +37,7 @@
     "chokidar": "~1.0.1",
     "cron": "~1.0.3",
     "github-markdown-css": "~2.0.9",
-    "gntp": "~0.1.1",
+    "growly": "~1.2.0",
     "istanbul": "~0.3.13",
     "livescript": "~1.4.0",
     "mocha": "~2.2.5",
