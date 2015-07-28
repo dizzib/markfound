@@ -50,10 +50,7 @@ rl = Rl.createInterface input:process.stdin, output:process.stdout
 
 Build.on \built ->
   Dist.prepare!
-  <- Site.stop
   err <- Test.run
-  return log err if err
-  err <- Site.start
   log err if err
 Build.start!
 Site.recycle!

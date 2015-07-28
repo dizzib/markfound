@@ -56,7 +56,7 @@ function compile t, ipath, cb
   switch typeof t.cmd
   | \string =>
     cmd = t.cmd.replace(\$IN "'#ipath-abs'").replace \$OUT "'#odir'"
-    log cmd
+    G.say cmd
     code, res <- exec cmd
     log code, res if code
     cb (if code then res else void), opath
@@ -95,7 +95,7 @@ function start-watching tid
     ignoreInitial:true
     ignored:t.ignore
     persistent: false
-  w.on \all _.debounce process, 500ms, leading:true trailing:false
+  w.on \all _.debounce process, 200ms, leading:true trailing:false
 
   function process act, ipath
     log act, tid, ipath

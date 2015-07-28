@@ -18,7 +18,7 @@ module.exports =
     args = "#I-ARGS -- #M-ARGS" / ' '
     output = ''
     Cp.spawn ISTANB, args, cwd:Dir.BUILD, stdio:[ 0, void, 2 ]
-      ..on \exit ->
+      ..on \close ->
         tail = output.slice -750
         G.ok "All tests passed\n\n#tail" nolog:true unless it
         G.alert "Tests failed (code=#it)\n\n#tail" nolog:true if it
