@@ -27,6 +27,7 @@ dependencies:
   marked       : \0.3.3
   stylus       : \0.49.3
 devDependencies:
+  chai                 : \~3.0.0
   chalk                : \~0.4.0
   chokidar             : \~1.0.1
   cron                 : \~1.0.3
@@ -35,6 +36,7 @@ devDependencies:
   istanbul             : \~0.3.13
   livescript           : \~1.4.0
   mocha                : \~2.2.5
+  mockery              : \~1.4.0
   morgan               : \~1.5.1
   shelljs              : \~0.3.0
   'wait.for'           : \~0.6.6
