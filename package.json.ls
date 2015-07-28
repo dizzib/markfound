@@ -17,15 +17,15 @@ scripts:
   start: './task/bootstrap && node ./_build/task/repl'
   test : './task/bootstrap && node ./_build/task/npm-test'
 dependencies:
-  commander    : \2.6.0
-  errorhandler : \1.3.2
-  express      : \4.11.1
+  commander       : \2.6.0
+  errorhandler    : \1.3.2
+  express         : \4.11.1
   'faye-websocket': \0.10.0
-  jade         : \1.9.2
-  leanconf     : \0.1.0
-  lodash       : \3.5.0
-  marked       : \0.3.3
-  stylus       : \0.49.3
+  jade            : \1.9.2
+  leanconf        : \0.1.0
+  lodash          : \3.5.0
+  marked          : \0.3.3
+  stylus          : \0.49.3
 devDependencies:
   chai                 : \~3.0.0
   chalk                : \~0.4.0
