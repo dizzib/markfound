@@ -52,6 +52,7 @@ Build.on \built ->
   Dist.prepare!
   err <- Test.run
   log err if err
+  Site.recycle!
 Build.start!
 Site.recycle!
 
