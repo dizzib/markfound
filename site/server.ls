@@ -6,7 +6,7 @@ Express = require \express
 Http    = require \http
 Morgan  = require \morgan if is-dev = (env = process.env.NODE_ENV) in <[ development ]>
 Path    = require \path
-Config  = require \./config .load! # must load first
+Config  = require \./config .load!get! # must load before following requires
 CustCss = require \./custom-css
 LiveRef = require \./live-refresh
 Index   = require \./index
@@ -21,17 +21,18 @@ express = Express!
     err, paths <- Index
     return next err if err
     res.render \index paths:paths
-  ..get /.*\.(markdown|md)$/ (req, res, next) ->
-    err, body <- Transf req.originalUrl
-    return next err if err
-    err, css <- CustCss
-    return next err if err
-    res.render \template/github body:body, css:css
+for na in Config.names then express.get na, (req, res, next) ->
+  err, body <- Transf req.originalUrl
+  return next err if err
+  err, css <- CustCss
+  return next err if err
+  res.render \template/github body:body, css:css
+express
   ..use Express.static "#__dirname/client"
   #..use Express.static Config.base-path
   ..use ErrHan log: -> log it.stack
 
 LiveRef http = Http.createServer express
-err <- http.listen port = Args.port
-return log err if err
-log "Express http server listening on port #port"
+http.listen (port = Args.port), (err) ->
+  return log err if err
+  log "Express http server listening on port #port"
