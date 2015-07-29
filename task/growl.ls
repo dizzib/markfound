@@ -24,8 +24,5 @@ return log "growl disabled" unless enabled
 log "growl at #growl-at"
 
 G.setHost growl-at
-err <- G.register Const.APPNAME, do
-  * label:\error
-  * label:\info
-  * label:\success
+err <- G.register Const.APPNAME, [{label:\error} {label:\info} {label:\success}]
 log err if err
