@@ -1,3 +1,4 @@
+<- $
 # set global log fn. We can't just set window.log = console.log because we'll get
 # 'illegal invocation' errors, since console.log expects 'this' to be console.
 log = -> console.log ...&
