@@ -10,14 +10,15 @@ module.exports = (http) ->
     return unless Ws.isWebSocket req
     ws = new Ws req, socket, body
     ws.on \message ->
-      fname = Path.join Config.get!base-path, path = it.data
-      # debounce is required since some editors write multiple times when saving
-      Fs.watch fname, _.debounce refresh-client, 100ms, leading:false trailing:true
       function refresh-client e
         log.debug 'refresh-client' e, fname
         err, body <- Transf path
         return log err if err
         ws.send body
+      fname = Path.join Config.get!base-path, path = it.data
+      # debounce is required since some editors write multiple times when saving
+      Fs.watch fname, _.debounce refresh-client, 100ms, leading:false trailing:true
+      refresh-client \init
     ws.on \close ->
       log.debug 'close'
       ws = void

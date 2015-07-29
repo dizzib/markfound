@@ -10,7 +10,6 @@ Config  = require \./config .load!get! # must load before following requires
 CustCss = require \./custom-css
 LiveRef = require \./live-refresh
 Index   = require \./index
-Transf  = require \./transform
 
 express = Express!
   ..set \port Args.port
@@ -24,11 +23,9 @@ express = Express!
     return next err if err
     res.render \index css:css, paths:paths
 for na in Config.names then express.get na, (req, res, next) ->
-  err, body <- Transf path = req.originalUrl
-  return next err if err
   err, css <- CustCss
   return next err if err
-  res.render \template/github body:body, css:css, title:path
+  res.render \template/github css:css, title:req.originalUrl
 express
   ..use Express.static "#__dirname/client"
   #..use Express.static Config.base-path
