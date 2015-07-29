@@ -1,11 +1,11 @@
 # markfound
 [![Build Status][travis-image]][travis-url]
 
-Runs Linux [find] to build an index of local markdown files for live preview:
+Index a nested directory of [markdown] files for live preview:
 
-* configure the base path and file patterns to include/exclude
+* configure the base-path and Linux-[find] patterns for include/exclude
 * styled for GitHub readme.md with option to add custom css
-* live refresh
+* live refresh automatically updates the preview as you edit your markdown
 
 ## install globally and run
 
@@ -14,8 +14,14 @@ Runs Linux [find] to build an index of local markdown files for live preview:
     $ cd directory/containing/markdown/files
     $ markfound
 
-then navigate to `http://localhost:4500` to see the index of markdown files.
-Follow a link for a live preview.
+then navigate to `http://localhost:4500` to see the index of markdown files:
+
+![index screenshot](http://dizzib.github.io/markfound/index.png)
+
+Follow a link for a preview which automatically updates as you edit the markdown:
+
+![index screenshot](http://dizzib.github.io/markfound/preview.png)
+
 
 ## configure
 
@@ -25,7 +31,7 @@ On its first run markfound copies the [default configuration file] to
 This is a [leanconf] file with the following settings:
 
 * `basePath:` - (required) path to the directory containing the markdown files.
-  Set to an absolute path to let markfound run from anywhere.
+  Set to an absolute path to let markfound be run from anywhere.
   Default is the current directory.
 
 * `names` - (required) a list of one or more wildcard patterns of form `*.ext`
@@ -82,6 +88,7 @@ This is a [leanconf] file with the following settings:
 [default configuration file]: ./site/default.conf
 [find]: http://man7.org/linux/man-pages/man1/find.1.html
 [leanconf]: https://github.com/dizzib/leanconf
+[markdown]: https://en.wikipedia.org/wiki/Markdown
 [stylus]: https://learnboost.github.io/stylus
 [travis-image]: https://travis-ci.org/dizzib/markfound.svg?branch=master
 [travis-url]: https://travis-ci.org/dizzib/markfound
