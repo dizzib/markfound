@@ -8,6 +8,10 @@ var cfg, fsw
 module.exports = me =
   get : -> cfg
   load: ->
+    function reload ev
+      return unless ev is \change
+      log "Reload #path"
+      me.load!
     me.reset!
     path = Args.config-path
     try
@@ -23,10 +27,7 @@ module.exports = me =
       Fs.writeFileSync path, conf = Fs.readFileSync "#__dirname/default.conf"
     cfg := Lc.parse conf
     validate!
-    fsw := Fs.watch path, (ev, fname) ->
-      return unless ev is \change
-      log "Reload #path"
-      me.load!
+    fsw := Fs.watch path, _.debounce reload, 500ms, leading:false trailing:true
     me
   reset: -> # for tests
     fsw?close!

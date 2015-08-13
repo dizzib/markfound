@@ -1,5 +1,5 @@
 name       : \markfound
-version    : \0.1.0
+version    : \0.1.1
 description: "Index a nested directory of markdown files for live preview"
 keywords   : <[ exclude find github include index live markdown refresh nested reload ]>
 homepage   : \https://github.com/dizzib/markfound

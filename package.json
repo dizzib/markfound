@@ -1,6 +1,6 @@
 {
   "name": "markfound",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Index a nested directory of markdown files for live preview",
   "keywords": [
     "exclude",
