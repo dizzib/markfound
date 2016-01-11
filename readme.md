@@ -1,10 +1,10 @@
 # markfound
 [![Build Status][travis-image]][travis-url]
 
-Index a nested directory of [markdown] files for live preview:
+Index one or more nested directories of [markdown] files for live preview:
 
-* configure the base-path and Linux-[find] patterns for include/exclude
-* styled for GitHub readme.md with option to add custom css
+* configure recursive search paths and Linux-[find] patterns for include/exclude
+* styled for GitHub readme.md with option to add custom tweaks css
 * live refresh automatically updates the preview as you edit your markdown
 
 ## install globally and run
@@ -16,11 +16,11 @@ Index a nested directory of [markdown] files for live preview:
 
 then navigate to `http://localhost:4500` to see the index of markdown files:
 
-![index screenshot](http://dizzib.github.io/markfound/index.png)
+![index screenshot](./readme/index.png)
 
 Follow a link for a preview which automatically updates as you edit the markdown:
 
-![index screenshot](http://dizzib.github.io/markfound/preview.png)
+![index screenshot](./readme/preview.png)
 
 
 ## configure

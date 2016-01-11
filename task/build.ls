@@ -22,7 +22,7 @@ tasks  =
     xsub  : 'json.js->json'
   static:
     cmd : 'cp --target-directory $OUT $IN'
-    pat : '{markfound,*.{conf,jade,js,md}}'
+    pat : '{markfound,*.{conf,jade,js,md,png}}'
 
 module.exports = me = (new Emitter!) with
   all: ->
@@ -89,11 +89,10 @@ function start-watching tid
   log "start watching #tid"
   Assert.equal pwd!, Dir.ROOT
   pat = (t = tasks[tid]).pat or "*.#{t.ixt}"
-  dirs = "#{Dirname.SITE},#{Dirname.TASK},#{Dirname.TEST}"
-  w = t.watcher = Choki.watch [ "{#dirs}/**/#pat" pat ],
-    cwd:Dir.ROOT
-    ignoreInitial:true
-    ignored:t.ignore
+  w = t.watcher = Choki.watch "**/#pat",
+    cwd: Dir.ROOT
+    ignoreInitial: true
+    ignored: <[ _build node_modules ]>
     persistent: false
   w.on \all _.debounce process, 500ms, leading:true trailing:false
 
