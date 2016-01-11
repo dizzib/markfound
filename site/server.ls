@@ -17,12 +17,12 @@ express = Express!
   ..set 'view engine' \jade
   ..set \views __dirname
   ..get '/' (, res, next) ->
-    err, paths <- Index
+    err, bases <- Index
     return next err if err
     err, css <- CustCss
     return next err if err
-    res.render \index css:css, paths:paths
-for na in Config.names then express.get na, (req, res, next) ->
+    res.render \index css:css, bases:bases
+for na in Config.names then express.get "/:bidx/#na" (req, res, next) ->
   err, css <- CustCss
   return next err if err
   res.render \template/github css:css, title:req.originalUrl

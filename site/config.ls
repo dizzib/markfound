@@ -34,8 +34,8 @@ module.exports = me =
     cfg := null
 
 function validate
-  throw new Error 'basePath not found' unless cfg.basePath?length
+  throw new Error 'basePaths not found' unless cfg.basePaths?length
   throw new Error 'names not found' unless _.isArray cfg.names and cfg.names.length
-  bad-keys =_.without (_.keys cfg), \basePath \names \excludes \stylusPath
+  bad-keys =_.without (_.keys cfg), \basePaths \names \excludes \stylusPath
   return unless bad-keys.length
   throw new Error "unrecognised keys #bad-keys"

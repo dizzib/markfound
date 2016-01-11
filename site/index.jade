@@ -4,7 +4,9 @@ html
     title markfound
     style !{css}
   body.index
-    ul
-      each path in paths
-        li
-          a(href=path)= path
+    each b, bindex in bases
+      h1= b.basePath
+      ul
+        each f in b.files
+          li
+            a(href=bindex + '/' + f)= f

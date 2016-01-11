@@ -11,13 +11,13 @@ module.exports = (http) ->
     ws = new Ws req, socket, body
     ws.on \message ->
       function refresh-client e
-        log.debug 'refresh-client' e, fname
-        err, body <- Transf path
+        log.debug 'refresh-client' e, fpath
+        err, body <- Transf fpath
         return log err if err
         ws.send body
-      fname = Path.join Config.get!base-path, path = it.data
+      fpath = it.data.replace /^\/(\d)/ (m, bidx) -> Config.get!basePaths[bidx]
       # debounce is required since some editors write multiple times when saving
-      Fs.watch fname, _.debounce refresh-client, 100ms, leading:false trailing:true
+      Fs.watch fpath, _.debounce refresh-client, 100ms, leading:false trailing:true
       refresh-client \init
     ws.on \close ->
       log.debug 'close'

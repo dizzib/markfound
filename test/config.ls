@@ -22,14 +22,14 @@ function expect then deq T.load!get!, it
 function prepare then cp \-f "./test/config/#it.conf" args.config-path
 function run id, exp then prepare id; expect exp
 
-const MIN = basePath:\/bp names:<[*.a]>
-const MAX = basePath:\/bp names:<[*.a *.b]> excludes:<[* *]> stylusPath:\/sp
+const MIN = basePaths:<[/bp]> names:<[*.a]>
+const MAX = basePaths:<[/bp0 bp1]> names:<[*.a *.b]> excludes:<[* *]> stylusPath:\/sp
 
 describe 'missing' ->
   beforeEach -> rm \-f args.config-path
   test 'with default config-path should copy default.conf' ->
     args.is-default-config-path = true
-    expect basePath:\./ names:<[*.md *.markdown]> excludes:<[*/node_modules/* */tmp/* */temp/*]>
+    expect basePaths:<[./]> names:<[*.md *.markdown]> excludes:<[*/node_modules/* */tmp/* */temp/*]>
   test 'with overridden config-path' ->
     args.is-default-config-path = false
     T.load!; A.isNull T.get!
@@ -44,6 +44,6 @@ test 'updated file should auto-reload' (done) ->
 
 describe 'error' ->
   function run id, expect then prepare id; A.throws T.load, expect
-  test 'no-basepath' -> run \no-basepath 'basePath not found'
+  test 'no-basepath' -> run \no-basepath 'basePaths not found'
   test 'no-names'    -> run \no-names 'names not found'
   test 'bad-keys'    -> run \bad-keys 'unrecognised keys foo,bar'
