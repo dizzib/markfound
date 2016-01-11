@@ -6,7 +6,7 @@ Args  = require \./args
 Const = require \./constants
 G     = require \./growl
 
-const RUNCMD = 'server -c ./default.conf -p 4501 -v'
+const RUNCMD = './site/server -c ./site/default.conf -p 4501 -v'
 
 module.exports = me =
   recycle: ->
@@ -17,7 +17,7 @@ module.exports = me =
   start: (cb) ->
     const RX-ERR = /(expected|error|exception)/i
     v = exec 'node --version', silent:true .output.replace '\n' ''
-    cwd = Const.dir.build.SITE
+    cwd = Const.dir.BUILD
     log "start site in node #v: #RUNCMD"
     return cb new Error "unable to start non-existent site at #cwd" unless test \-e cwd
     Cp.spawn \node, (RUNCMD.split ' '), cwd:cwd, env:env <<< NODE_ENV:\development

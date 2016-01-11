@@ -26,9 +26,9 @@ for na in Config.names then express.get "/:bidx/#na" (req, res, next) ->
   err, css <- CustCss
   return next err if err
   res.render \template/github css:css, title:req.originalUrl
+for bpath, bidx in Config.basePaths then express.use "/#bidx" Express.static bpath
 express
   ..use Express.static "#__dirname/client"
-  #..use Express.static Config.base-path
   ..use ErrHan log: -> log it.stack
 
 LiveRef http = Http.createServer express
