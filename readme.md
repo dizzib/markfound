@@ -30,9 +30,10 @@ On its first run markfound copies the [default configuration file] to
 `$HOME/.config/markfound.conf`.
 This is a [leanconf] file with the following settings:
 
-* `basePath:` - (required) path to the directory containing the markdown files.
-  Set to an absolute path to let markfound be run from anywhere.
-  Default is the current directory.
+* `basePaths:` - (required) one or more directory paths to recursively search for markdown files.
+  Place each path on its own line indented to the same level.
+  Specify absolute paths to let markfound be run from anywhere.
+  Default is the current directory only.
 
 * `names` - (required) a list of one or more wildcard patterns of form `*.ext`
   where `ext` is the extension to include.
