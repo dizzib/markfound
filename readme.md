@@ -5,7 +5,8 @@ Index one or more nested directories of [markdown] files for live preview:
 
 * configure recursive search paths and Linux-[find] patterns for include/exclude
 * styled for GitHub readme.md with option to add custom tweaks css
-* live refresh automatically updates the preview as you edit your markdown
+* live refresh automatically updates the preview as you edit your markdown, even
+  over nfs, cifs or vboxsf
 
 ## install globally and run
 
