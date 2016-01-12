@@ -25,7 +25,7 @@ express = Express!
 for na in Config.names then express.get "/:bidx/#na" (req, res, next) ->
   err, css <- CustCss
   return next err if err
-  res.render \template/github css:css, title:req.originalUrl
+  res.render \template/github css:css, title:req.originalUrl.replace "/#bidx/" ''
 for bpath, bidx in Config.basePaths then express.use "/#bidx" Express.static bpath
 express
   ..use Express.static "#__dirname/client"
