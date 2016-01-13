@@ -3,8 +3,8 @@
 
 Recursively index directories of [markdown] files for live preview:
 
-* configure recursive search paths and Linux-[find] patterns for include/exclude
-* styled for GitHub readme.md with option to add custom tweaks css
+* configure one or more base-paths and Linux-[find] patterns for include/exclude
+* [styled for GitHub][github-markdown-css] with option to append your own custom css
 * live refresh automatically updates the preview as you edit your markdown, even
   over nfs, cifs or vboxsf
 
@@ -22,7 +22,6 @@ then navigate to `http://localhost:4500` to see the index of markdown files:
 Follow a link for a preview which automatically updates as you edit the markdown:
 
 ![index screenshot](./readme/preview.png)
-
 
 ## configure
 
@@ -89,6 +88,7 @@ This is a [leanconf] file with the following settings:
 [$XDG_CONFIG_HOME]: http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 [default configuration file]: ./site/default.conf
 [find]: http://man7.org/linux/man-pages/man1/find.1.html
+[github-markdown-css]: https://github.com/sindresorhus/github-markdown-css
 [leanconf]: https://github.com/dizzib/leanconf
 [markdown]: https://en.wikipedia.org/wiki/Markdown
 [stylus]: https://learnboost.github.io/stylus
