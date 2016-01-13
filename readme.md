@@ -1,7 +1,7 @@
 # markfound
 [![Build Status][travis-image]][travis-url]
 
-Index one or more nested directories of [markdown] files for live preview:
+Recursively index directories of [markdown] files for live preview:
 
 * configure recursive search paths and Linux-[find] patterns for include/exclude
 * styled for GitHub readme.md with option to add custom tweaks css

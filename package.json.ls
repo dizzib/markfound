@@ -1,7 +1,7 @@
 name       : \markfound
 version    : \0.2.0
-description: "Index a nested directory of markdown files for live preview"
-keywords   : <[ exclude find github include index live markdown refresh nested reload ]>
+description: "Recursively index directories of markdown files for live preview"
+keywords   : <[ exclude find github include index live markdown nested preview recursive refresh reload ]>
 homepage   : \https://github.com/dizzib/markfound
 bugs       : \https://github.com/dizzib/markfound/issues
 license:   : \MIT
