@@ -3,7 +3,8 @@
 
 Recursively index directories of [markdown] files for live preview:
 
-* configure one or more base-paths and Linux-[find] patterns for include/exclude
+* specify one or more base-paths to search
+* configure [Linux find][find] patterns for include/exclude
 * [styled for GitHub][github-markdown-css] with option to append your own custom css
 * live refresh automatically updates the preview as you edit your markdown, even
   over nfs, cifs or vboxsf
@@ -39,7 +40,7 @@ This is a [leanconf] file with the following settings:
   where `ext` is the extension to include.
   Place each pattern on its own line indented to the same level.
 
-* `excludes` - (optional) a list of exclusion patterns passed to the Linux
+* `excludes` - (optional) a list of exclusion patterns passed to the [Linux find]
   [find] `-path` option.
   Place each path on its own line indented to the same level.
 
