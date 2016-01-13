@@ -31,7 +31,7 @@ devDependencies:
   chalk                : \~0.4.0
   chokidar             : \~1.0.1
   cron                 : \~1.0.3
-  'github-markdown-css': \~2.0.9
+  'github-markdown-css': \~2.2.0
   growly               : \~1.2.0
   istanbul             : \~0.3.13
   livescript           : \~1.4.0

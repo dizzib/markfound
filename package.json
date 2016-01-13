@@ -1,7 +1,7 @@
 {
   "name": "markfound",
   "version": "0.2.0",
-  "description": "Index a nested directory of markdown files for live preview",
+  "description": "Recursively index directories of markdown files for live preview",
   "keywords": [
     "exclude",
     "find",
@@ -10,8 +10,10 @@
     "index",
     "live",
     "markdown",
-    "refresh",
     "nested",
+    "preview",
+    "recursive",
+    "refresh",
     "reload"
   ],
   "homepage": "https://github.com/dizzib/markfound",
@@ -47,7 +49,7 @@
     "chalk": "~0.4.0",
     "chokidar": "~1.0.1",
     "cron": "~1.0.3",
-    "github-markdown-css": "~2.0.9",
+    "github-markdown-css": "~2.2.0",
     "growly": "~1.2.0",
     "istanbul": "~0.3.13",
     "livescript": "~1.4.0",
