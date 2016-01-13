@@ -7,11 +7,14 @@ html
     style
       include ./github-markdown.css
       :stylus
+        .container
+          width         980px
+          margin-left   auto
+          margin-right  auto
         .markdown-body
-          min-width 200px
-          max-width 980px
-          margin    0 auto
-          padding   45px
+          border        solid 1px #ddd
+          padding       45px
     style !{css}
   body
-    .markdown-body !{body}
+    .container
+      .markdown-body !{body}
