@@ -9,7 +9,7 @@ Transf = require \./transform
 module.exports = (http) ->
   http.on \upgrade (req, socket, body) ->
     return unless Ws.isWebSocket req
-    ws = new Ws req, socket, body
+    ws = new Ws req, socket, body, void, ping:30
     ws.on \message ->
       fpath = it.data.replace /^\/(\d)/ (m, bidx) -> Config.get!basePaths[bidx]
       err, fs-type, stderr <- Cp.exec "stat -fc%T #fpath"
