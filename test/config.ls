@@ -40,7 +40,7 @@ test 'max' -> run \max MAX
 test 'updated file should auto-reload' (done) ->
   run \min MIN
   prepare \max
-  setTimeout (-> expect MAX; done!), 5
+  setTimeout (-> deq T.get!, MAX; done!), 5
 
 describe 'error' ->
   function run id, expect then prepare id; A.throws T.load, expect
